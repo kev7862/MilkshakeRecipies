@@ -8,24 +8,30 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.io.IOException;
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
 
 public class MilkshakeActivity extends AppCompatActivity {
 
-    private ListView milkshakeList;
+    public static final String TAG = MilkshakeActivity.class.getSimpleName();
+
+    @Bind(R.id.milkshakeList) ListView milkshakeList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_milkshake);
-
+        ButterKnife.bind(this);
+    }
     private void getRestaurants(String location) {
         final YelpService yelpService = new YelpService();
         yelpService.findRestaurants(location, new Callback() {
@@ -44,25 +50,6 @@ public class MilkshakeActivity extends AppCompatActivity {
                 }
             }
 
-        });
-    }
-}
-
-
-
-        ListView milkshakeList = (ListView)findViewById(R.id.milkshakeList);
-
-        final ArrayList<String> myMilkshakes = new ArrayList<String>();
-
-
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_dropdown_item_1line, myMilkshakes);
-        milkshakeList.setAdapter(arrayAdapter);
-        milkshakeList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            // ItemClick on position
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Toast.makeText(getApplicationContext(), myMilkshakes.get(i), Toast.LENGTH_LONG).show();
-            }
         });
     }
 }
