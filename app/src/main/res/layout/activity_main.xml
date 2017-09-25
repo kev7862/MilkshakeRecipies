@@ -29,11 +29,12 @@
         android:id="@+id/milkshakeButton"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/buttontitle"
-        android:textSize="20sp"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimary"/>
+        android:background="@color/colorPrimary"
+        android:onClick="clickFunction"
+        android:text="@string/buttontitle"
+        android:textSize="20sp" />
 
 </RelativeLayout>
